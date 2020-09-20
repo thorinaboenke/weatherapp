@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function Weather() {
   const [city, setCity] = useState('Vienna');
-  const endpoint = 'api.openweathermap.org/data/2.5/weather?q=';
-  //const key = '&APPID=' + env.local.REACT_APP_WEATHER_APP_API_KEY;
+  const key = process.env.REACT_APP_WEATHER_APP_API_KEY;
   //const location = city
-  const url = endpoint + city; //+ key;
-  const example =
-    'api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=d66544c370c6e030eacf1c872ea3ce14';
+  const url = `api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`; //+ key;
+  const example = `api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=${key}`;
 
   // 4) Function that is passed to the child to handle submit event, will update the parent state to the current childs state
   const selectCity = (newCity) => {
@@ -48,11 +47,23 @@ export default function Weather() {
     );
   }
 
+  function Weatherforecast(props) {
+    axios
+      .get(
+        'api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=d66544c370c6e030eacf1c872ea3ce14',
+      )
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+
+    return <div></div>;
+  }
+
   // pass function to handle Submit as prop to the child
   return (
     <div>
       <CityInput handleSubmit={selectCity} />
       <p>Displaying the weather for {city}</p>
+      <Weatherforecast url={url} />
     </div>
   );
 }
