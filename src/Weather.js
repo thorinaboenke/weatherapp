@@ -20,7 +20,7 @@ export default function Weather() {
   // whenever the city is changed (and only then), call the getWeatherfunction to update the weather state
   useEffect(() => {
     getWeatherInfo(city);
-  }, [city]);
+  }, []);
 
   // 4) Function that is passed to the child to handle submit event, will update the parent state to the current childs state
   const selectCity = (newCity) => {
