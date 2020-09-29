@@ -8,7 +8,7 @@ export default function Weather() {
   // this function fetches data from API for given city and outputs json (assign to state 'weather')
   function getWeatherInfo(city) {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.REACT_APP_WEATHER_APP_API_KEY}`,
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`,
     )
       .then((response) => response.json())
       .then((res) => {
@@ -49,7 +49,7 @@ export default function Weather() {
       <>
         <form
           onSubmit={(event) => {
-            props.handleSubmit(value);
+            handleSubmit(value);
             event.preventDefault();
           }}
         >
