@@ -1,4 +1,4 @@
-import React, {useState }from 'react';
+import React, { useState } from 'react';
 
 export default function CityInput(props) {
   const [value, setValue] = useState('');
@@ -18,6 +18,7 @@ export default function CityInput(props) {
     <>
       <form
         onSubmit={(event) => {
+          props.selectCity(value);
           props.handleSubmit(value);
           event.preventDefault();
         }}

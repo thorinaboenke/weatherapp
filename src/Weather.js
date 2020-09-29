@@ -39,7 +39,7 @@ export default function Weather() {
   // pass function to handle Submit as prop to the child
   return (
     <div>
-      <CityInput handleSubmit={handleSubmit} />
+      <CityInput handleSubmit={handleSubmit} selectCity={selectCity} />
       <div className="weather-container">
         <div className="weather">
           {weather ? (
